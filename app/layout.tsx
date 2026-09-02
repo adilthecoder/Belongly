@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import './identity.css';
 export const metadata: Metadata = {
   title:'Belongly — Your things. Remembered.',
   description:'Belongly remembers where you put things, who has them, and when they should come back. Private, local-first, and coming to Android.',
