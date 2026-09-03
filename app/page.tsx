@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const belongings = [
@@ -10,6 +11,13 @@ const memoryStories = [
   { label: 'PUT AWAY', item: 'Passport', answer: 'Top drawer', detail: 'Bedroom cabinet', icon: '◇' },
   { label: 'LENT OUT', item: 'Impact Drill', answer: 'With Ahmed', detail: 'Due Saturday', icon: '⌁' },
   { label: 'FOUND FAST', item: 'GoPro', answer: 'TV console', detail: 'Second drawer', icon: '◉' },
+];
+
+const appScreens = [
+  { src: '/app-screenshots/home.png', title: 'Remember at a glance', copy: 'See what you own and what changed recently.' },
+  { src: '/app-screenshots/belongings.png', title: 'Find anything fast', copy: 'Search by item, person, place, or current status.' },
+  { src: '/app-screenshots/add.png', title: 'Save the useful details', copy: 'Add what it is, where it lives, and anything worth remembering.' },
+  { src: '/app-screenshots/manage.png', title: 'Keep your memory organized', copy: 'Manage places, appearance, lending, and private backups.' },
 ];
 
 function BelonglyMark({ className = '' }: { className?: string }) {
@@ -41,7 +49,7 @@ export default function Home() {
     <nav className="nav shell">
       <a className="brand" href="#top"><BelonglyMark/><span>Belongly</span></a>
       <button className="menu" onClick={()=>setMenu(!menu)} aria-expanded={menu}>Menu</button>
-      <div className={`links ${menu?'open':''}`}><a href="#how">How it works</a><a href="#privacy">Privacy</a><a href="#future">What’s next</a><button className="themeToggle" onClick={()=>setTheme(theme==='dark'?'light':'dark')} aria-label="Toggle color theme">{theme==='dark'?'☼':'☾'}</button></div>
+      <div className={`links ${menu?'open':''}`}><a href="#preview">App preview</a><a href="#how">How it works</a><a href="#privacy">Privacy</a><a href="#future">What’s next</a><button className="themeToggle" onClick={()=>setTheme(theme==='dark'?'light':'dark')} aria-label="Toggle color theme">{theme==='dark'?'☼':'☾'}</button></div>
     </nav>
 
     <section className="hero shell" id="top">
@@ -79,6 +87,16 @@ export default function Home() {
       <div className="storyIntro"><small>A SMALL MOMENT. REMEMBERED.</small><p>Watch one belonging move through real life.</p></div>
       <div className="storySwitcher">
         {memoryStories.map((item,index)=><button key={item.label} className={story===index?'active':''} onClick={()=>setStory(index)}><small>{item.label}</small><span>{item.icon}</span><div><b>{item.item}</b><p>{item.answer}<em>{item.detail}</em></p></div><i/></button>)}
+      </div>
+    </section>
+
+    <section className="appPreview shell scrollReveal" id="preview">
+      <div className="appPreviewIntro"><small>THE REAL APP</small><h2>Built for the moments<br/>memory lets slip.</h2><p>From saving an item to finding it again, these are real screens from Belongly running on Android.</p></div>
+      <div className="screenRail">
+        {appScreens.map((screen, index) => <article className="screenCard" key={screen.title}>
+          <div className="deviceFrame"><Image src={screen.src} width={1080} height={2340} sizes="(max-width: 700px) 78vw, (max-width: 1000px) 45vw, 22vw" alt={`${screen.title} in the Belongly Android app`} /></div>
+          <span>0{index + 1}</span><h3>{screen.title}</h3><p>{screen.copy}</p>
+        </article>)}
       </div>
     </section>
 
