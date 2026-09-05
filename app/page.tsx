@@ -17,7 +17,7 @@ const appScreens = [
   { src: '/app-screenshots/home.png', title: 'Remember at a glance', copy: 'See what you own and what changed recently.' },
   { src: '/app-screenshots/belongings.png', title: 'Find anything fast', copy: 'Search by item, person, place, or current status.' },
   { src: '/app-screenshots/add.png', title: 'Save the useful details', copy: 'Add what it is, where it lives, and anything worth remembering.' },
-  { src: '/app-screenshots/manage.png', title: 'Keep your memory organized', copy: 'Manage places, appearance, lending, and private backups.' },
+  { src: '/app-screenshots/manage.png', title: 'Keep your memory organized', copy: 'Manage places, appearance, private data, and backups.' },
 ];
 
 function BelonglyMark({ className = '' }: { className?: string }) {
